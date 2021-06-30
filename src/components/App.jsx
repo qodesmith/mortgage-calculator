@@ -26,6 +26,10 @@ export default function App() {
             onChange={setHomePrice}
             step={1000}
             max={1_000_000}
+            options={[
+              600_000, 700_000, 725_000, 750_000, 775_000, 800_000, 825_000,
+              850_000,
+            ]}
           />
 
           <SlidingInput
@@ -66,7 +70,7 @@ export default function App() {
           />
         </div>
 
-        <div>
+        <div className="mt16">
           <div className="dif flex-col">
             <Input
               type="checkbox"
@@ -85,14 +89,16 @@ export default function App() {
           </div>
         </div>
 
-        <ResultsTable
-          homePrice={homePrice}
-          downPayment={downPayment}
-          interestRate={interestRate}
-          taxes={taxes}
-          insurance={insurance}
-          term={term}
-        />
+        <div className="df justify-center mt32">
+          <ResultsTable
+            homePrice={homePrice}
+            downPayment={downPayment}
+            interestRate={interestRate}
+            taxes={taxes}
+            insurance={insurance}
+            term={term}
+          />
+        </div>
       </section>
     </div>
   )

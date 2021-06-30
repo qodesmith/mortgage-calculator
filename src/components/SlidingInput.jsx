@@ -1,6 +1,7 @@
 import useRunAfterUpdate from 'hooks/useRunAfterUpdate'
 import Input from 'components/Input'
 import {cn} from 'helpers'
+import {useState} from 'react'
 
 export default function SlidingInput({
   value,
@@ -8,8 +9,11 @@ export default function SlidingInput({
   label,
   className,
   type = 'text',
+  options,
   ...inputProps
 }) {
+  const [listValue, setListValue] = useState('')
+
   // const runAfterUpdate = useRunAfterUpdate()
   const handleChange = e => {
     const {target} = e
@@ -18,11 +22,23 @@ export default function SlidingInput({
     const newValue = type === 'number' ? val : +newText
 
     onChange(+newValue)
+    if (options != null) {
+      setListValue('')
+    }
 
     // runAfterUpdate(() => {
     //   target.selectionStart = newCursor
     //   target.selectionEnd = newCursor
     // })
+  }
+
+  const handleListChange = e => {
+    const {value: val} = e.target
+    const [value, newCursor] = filterInput(val, 0)
+    const newValue = type === 'number' ? val : +value
+
+    setListValue(val)
+    onChange(+newValue)
   }
 
   return (
@@ -40,6 +56,16 @@ export default function SlidingInput({
         {...inputProps}
         type="range"
       />
+      {options != null && (
+        <select value={listValue} onChange={handleListChange}>
+          <option value="">Choose a price</option>
+          {options.map(value => (
+            <option key={value} value={value}>
+              {value.toLocaleString()}
+            </option>
+          ))}
+        </select>
+      )}
     </div>
   )
 }
