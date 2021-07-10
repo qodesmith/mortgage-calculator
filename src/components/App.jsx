@@ -6,7 +6,7 @@ import GithubLogo from 'components/GithubLogo'
 
 export default function App() {
   const [homePrice, setHomePrice] = useState(600_000)
-  const [downPayment, setDownPayment] = useState(300_000)
+  const [downPayment, setDownPayment] = useState(homePrice * 0.2)
   const [interestRate, setInterestRate] = useState(3.375)
   const [taxes, setTaxes] = useState(12_000)
   const [insurance, setInsurance] = useState(1600)
@@ -14,15 +14,13 @@ export default function App() {
 
   return (
     <div className="df flex-col vh-100">
-      <header className="pv24 bg-gold black-80">
-        <div className="tc">
-          <h1 className="mt0 mb0">Mortgage Calculator</h1>
-          <div>By The Qodesmith</div>
-        </div>
+      <header className="pv24 bg-gold black-80 df flex-col align-items-center">
+        <h1 className="mt0 mb0">Mortgage Calculator</h1>
+        <div>By The Qodesmith</div>
         <a
           href="https://github.com/qodesmith/mortgage-calculator"
           target="_blank"
-          className="dib mra">
+          className="mt8">
           <GithubLogo />
         </a>
       </header>
