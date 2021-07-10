@@ -23,6 +23,26 @@ body {
   The styles provided below are a minimal suggested starting point.
 */
 
+.github-logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+table,
+th,
 td {
   border: 1px solid;
+  border-collapse: collapse;
+}
+
+th {
+  padding: 8px 16px;
+  font-size: 1.4em;
+}
+
+td {
+  padding: 4px;
+  font-size: 1.2em;
+  font-family: monospace;
 }

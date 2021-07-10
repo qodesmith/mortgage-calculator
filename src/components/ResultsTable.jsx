@@ -8,7 +8,9 @@ export default function ResultsTable({
   insurance,
   term,
 }) {
-  const adjustments = [-50_000, -25_000, 0, 25_000, 50_000]
+  const adjustments = [-100, -75, -50, -25, 0, 25, 50, 75, 100].map(
+    n => n * 1000,
+  )
   const monthlyPayments = adjustments.map(adjustment => {
     const price = homePrice + adjustment
     return getMonthlyPayment({
@@ -24,8 +26,10 @@ export default function ResultsTable({
   return (
     <table>
       <thead>
-        <th>Home Price</th>
-        <th>Monthly Payment</th>
+        <tr>
+          <th>Home Price</th>
+          <th>Monthly Payment</th>
+        </tr>
       </thead>
       <tbody>
         {monthlyPayments.map((payment, i) => {
@@ -33,9 +37,14 @@ export default function ResultsTable({
           const price = homePrice + adjustment
 
           return (
-            <tr key={i} className={cn({b: adjustment === 0})}>
-              <td>{price}</td>
-              <td>{payment}</td>
+            <tr
+              key={i}
+              className={cn({
+                'b f-1-2em': adjustment === 0,
+                'bg-lightgray': !(i % 2),
+              })}>
+              <td>${price.toLocaleString()}</td>
+              <td>${payment.toLocaleString()}</td>
             </tr>
           )
         })}

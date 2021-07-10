@@ -2,6 +2,7 @@ import {useState} from 'react'
 import SlidingInput from 'components/SlidingInput'
 import Input from 'components/Input'
 import ResultsTable from 'components/ResultsTable'
+import GithubLogo from 'components/GithubLogo'
 
 export default function App() {
   const [homePrice, setHomePrice] = useState(600_000)
@@ -13,9 +14,17 @@ export default function App() {
 
   return (
     <div className="df flex-col vh-100">
-      <header className="pv24 bg-gold black-80 tc">
-        <h1 className="mt0 mb0">Mortgage Calculator</h1>
-        <div>By The Qodesmith</div>
+      <header className="pv24 bg-gold black-80">
+        <div className="tc">
+          <h1 className="mt0 mb0">Mortgage Calculator</h1>
+          <div>By The Qodesmith</div>
+        </div>
+        <a
+          href="https://github.com/qodesmith/mortgage-calculator"
+          target="_blank"
+          className="dib mra">
+          <GithubLogo />
+        </a>
       </header>
 
       <section className="flex-grow-1 fw4 tc pt24">
